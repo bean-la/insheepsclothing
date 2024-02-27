@@ -40,50 +40,21 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
             </a>
             <div data-filter="genre" class="filter margin-top-micro closed">
               <form>
-                <div class="padding-bottom-micro">
-                  <input id="ambientCheckbox" type="checkbox" name="ambient" value="Ambient" />
-                  <label for="ambientCheckbox">Ambient</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="electronicCheckbox" type="checkbox" name="electronic" value="Electronic" />
-                  <label for="electronicCheckbox">Electronic</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="danceCheckbox" type="checkbox" name="dance" value="Dance" />
-                  <label for="danceCheckbox">Dance</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="jazzCheckbox" type="checkbox" name="jazz" value="Jazz" />
-                  <label for="jazzCheckbox">Jazz</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="dubReggaeCheckbox" type="checkbox" name="dub-reggae" value="Dub / Reggae" />
-                  <label for="dubReggaeCheckbox">Dub / Reggae</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="rockFolkCheckbox" type="checkbox" name="rock-folk" value="Rock / Folk" />
-                  <label for="rockFolkCheckbox">Rock / Folk</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="soulCheckbox" type="checkbox" name="soul" value="Soul" />
-                  <label for="soulCheckbox">Soul</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="japanCheckbox" type="checkbox" name="japan" value="Japan" />
-                  <label for="japanCheckbox">Japan</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="africaCheckbox" type="checkbox" name="africa" value="Africa" />
-                  <label for="africaCheckbox">Africa</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="southAmericaCheckbox" type="checkbox" name="south-america" value="South America" />
-                  <label for="southAmericaCheckbox">South America</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="globalMiscCheckbox" type="checkbox" name="global-misc" value="Global Misc." />
-                  <label for="globalMiscCheckbox">Global Misc.</label>
-                </div>
+                <?php 
+                  if (get_store_genre_filters()) { 
+                    foreach (get_store_genre_filters() as $genre) {
+                      $genre_details = get_term_by('slug', $genre, 'style');
+                      $genre_name_camel_case = lcfirst(str_replace('-', '', ucwords($genre_details->name, '-')));
+                    
+                ?>
+                  <div class="padding-bottom-micro">
+                    <input id="<?php echo $genre_name_camel_case ?>" type="checkbox" name="<?php echo $genre ?>" value="<?php echo $genre_details->name ?>" />
+                    <label for="<?php echo $genre_name_camel_case ?>"><?php echo $genre_details->name ?></label>
+                  </div>
+                <?php 
+                    }
+                  } 
+                ?>
               </form>
             </div>
             <a href="#" onClick="return false;" class="sidebar-toggle">
@@ -98,26 +69,21 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
             </a>
             <div data-filter="format" class="filter margin-top-micro closed">
               <form>
-                <div class="padding-bottom-micro">
-                  <input id="vinylNewCheckbox" type="checkbox" name="vinyl-new" value="Vinyl New" />
-                  <label for="vinylNewCheckbox">Vinyl New</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="vinylUsedCheckbox" type="checkbox" name="vinyl-used" value="Vinyl Used" />
-                  <label for="vinylUsedCheckbox">Vinyl Used</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="cassetteCheckbox" type="checkbox" name="cassette" value="Cassette" />
-                  <label for="cassetteCheckbox">Cassette</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="merchandiseCheckbox" type="checkbox" name="merchandise" value="Merchandise" />
-                  <label for="merchandiseCheckbox">Merchandise</label>
-                </div>
-                <div class="padding-bottom-micro">
-                  <input id="booksTapeCheckbox" type="checkbox" name="books-tape" value="Books & Tape" />
-                  <label for="booksTapeCheckbox">Books & Tape</label>
-                </div>
+                <?php 
+                  if (get_store_format_filters()) { 
+                    foreach (get_store_format_filters() as $format) {
+                      $format_details = get_term_by('slug', $format, 'format');
+                      $format_name_camel_case = lcfirst(str_replace('-', '', ucwords($format_details->name, '-')));
+                    
+                ?>
+                  <div class="padding-bottom-micro">
+                    <input id="<?php echo $format_name_camel_case ?>" type="checkbox" name="<?php echo $format ?>" value="<?php echo $format_details->name ?>" />
+                    <label for="<?php echo $format_name_camel_case ?>"><?php echo $format_details->name ?></label>
+                  </div>
+                <?php 
+                    }
+                  } 
+                ?>
               </form>
             </div>
             <div class="<?php if (!$_GET['list']) echo 'font-bold'; ?> sidebar-item">

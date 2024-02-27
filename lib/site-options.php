@@ -220,4 +220,19 @@ function igv_register_theme_options_metabox() {
     'type'    => 'checkbox',
   ) );
 
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Genre Filter', 'cmb2' ),
+    'id'      => 'genre_filters',
+    'desc'    => 'The selected genres will appear in the filter section in the sidebar of the store page',
+    'type'    => 'taxonomy_multicheck_inline',
+    'taxonomy'       => 'style'
+  ) );
+
+  $site_options->add_field( array(
+    'name'    => esc_html__( 'Format Filter', 'cmb2' ),
+    'id'      => 'format_filters',
+    'desc'    => 'The selected formats will appear in the filter section in the sidebar of the store page',
+    'type'    => 'taxonomy_multicheck_inline',
+    'taxonomy'       => 'format'
+  ) );
 }

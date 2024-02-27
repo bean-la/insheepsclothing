@@ -97,3 +97,33 @@ body.post-type-archive-product
   flex-basis: min-content !important
 .align-items-flex-start
   align-items: flex-start
+
+@media screen and (max-width: 1024px)
+  .post-type-archive-product
+    .shop-sidebar
+      max-width: 30% !important
+      flex-basis: 30% !important
+    .shop-grid
+      max-width: 70% !important 
+      flex-basis: 70% !important
+    .grid-row>.item-s-4
+      max-width: 50%
+      flex-basis: 50%
+    .product-sort-dropdown
+      top: 37px
+      a
+        div
+          padding: 8px 24px 8px 4px
+
+@media screen and (max-width: 480px)
+  .post-type-archive-product
+    .shop-sidebar, .shop-grid
+      max-width: 100% !important
+      flex-basis: 100% !important
+    .grid-row>.item-s-4
+      max-width: 50%
+      flex-basis: 50%
+    .shop-grid 
+      margin-top: 40px
+    .item-s-12
+      flex-basis: auto

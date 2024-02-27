@@ -58,6 +58,33 @@ function create_album_taxonomies() {
 
 	register_taxonomy( 'style', array( 'album', 'product' ), $args );
 
+	// Add new taxonomy, make it hierarchical (like categories)
+	$labels = array(
+		'name'              => _x( 'Formats', 'taxonomy general name', 'igv' ),
+		'singular_name'     => _x( 'Format', 'taxonomy singular name', 'igv' ),
+		'search_items'      => __( 'Search Formats', 'igv' ),
+		'all_items'         => __( 'All Formats', 'igv' ),
+		'parent_item'       => __( 'Parent Format', 'igv' ),
+		'parent_item_colon' => __( 'Parent Format:', 'igv' ),
+		'edit_item'         => __( 'Edit Format', 'igv' ),
+		'update_item'       => __( 'Update Format', 'igv' ),
+		'add_new_item'      => __( 'Add New Format', 'igv' ),
+		'new_item_name'     => __( 'New Format Name', 'igv' ),
+		'menu_name'         => __( 'Formats', 'igv' ),
+	);
+
+	$args = array(
+		'hierarchical'      => false,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'format' ),
+    'show_in_rest'      => true,
+	);
+
+	register_taxonomy( 'format', array( 'album', 'product' ), $args );
+
   // Add new taxonomy, make it hierarchical (like categories)
 	$labels = array(
 		'name'              => _x( 'Years', 'taxonomy general name', 'igv' ),

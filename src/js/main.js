@@ -877,6 +877,7 @@ class Site {
       }
       existingParams.join(',');
       searchParams.set(filterType, existingParams);
+      searchParams.set('paged', 1);
 
       window.location.href = "?" + searchParams;
     })

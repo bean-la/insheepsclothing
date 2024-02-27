@@ -94,3 +94,23 @@ function get_show_join_record_club_btn() {
   }
   return false;
 }
+
+function get_store_genre_filters() {
+  $options = get_site_option('_igv_site_options');
+  if (array_key_exists('genre_filters', $options)) {
+    if ($options['genre_filters']) {
+      return $options['genre_filters'];
+    }
+  }
+  return false;
+}
+
+function get_store_format_filters() {
+  $options = get_site_option('_igv_site_options');
+  if (array_key_exists('format_filters', $options)) {
+    if ($options['format_filters']) {
+      return $options['format_filters'];
+    }
+  }
+  return false;
+}

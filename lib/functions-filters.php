@@ -230,6 +230,7 @@ add_filter( 'pre_get_posts', 'product_sort' );
 function product_sort( $query ) {
   if (is_post_type_archive('product')) {
     if ( !is_admin() && $query->is_main_query() ) {
+      // Filter for store homepage sort functionality
       if ( $_GET['sort'] ) {
         switch ($_GET['sort']) {
           case 'featured':
@@ -256,6 +257,30 @@ function product_sort( $query ) {
             $query->set('order', 'ASC');
             break;
           }
+        }
+
+        // Filter for genre filter
+        if ( $_GET['genre'] ) {
+          $genres = explode ("," , $_GET['genre'] );
+          $query->set('tax_query', array(
+            array (
+              'taxonomy' => 'style',
+              'field' => 'slug',
+              'terms' => $genres
+            )
+          ));
+        }
+
+        // Filter for format filter
+        if ( $_GET['format'] ) {
+          $formats = explode ("," , $_GET['format'] );
+          $query->set('tax_query', array(
+            array (
+              'taxonomy' => 'format',
+              'field' => 'slug',
+              'terms' => $formats
+            )
+          ));
         }
       }
     }
