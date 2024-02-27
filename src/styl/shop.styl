@@ -1,0 +1,99 @@
+.product-image-holder
+  display: none
+body.post-type-archive-product
+  background-color: #F1F1F1
+.shop-header
+  padding: 12px 0
+  border: 1px solid #C1C1C1
+  border-left: 0
+  border-right: 0
+  .font-bold
+    margin-right: 10px
+  .product-sort
+    position: relative
+    cursor: pointer
+  .product-sort-dropdown
+    display: none
+    position: absolute
+    z-index: 999
+    background: #F1F1F1
+    width: 100%
+    border: 1px solid #C1C1C1
+    a div
+      padding: 8px 24px
+      &.item-selected
+        background: #C1C1C1
+      &:hover, &.item-selected
+        font-family: $font-mono-bold
+        font-weight: bold
+  .product-sort:hover .product-sort-dropdown
+    display: block
+
+.shop-sidebar
+  padding: 0 !important
+  .filter-category
+    border: 1px solid #E6E6E6
+    padding: 12px 16px
+    margin-bottom: 20px
+    .filter
+      visibility: visible
+      transition: all 0.2s ease
+      &.closed
+        visibility: hidden
+        height: 0
+        opacity: 0
+        transition: none
+  input[type='checkbox']
+    width: 12px
+    height: 12px
+    border-radius: 0
+    cursor: pointer
+    &:checked
+      background: black
+  label
+    cursor: pointer
+  .sidebar-item
+    padding: 12px 0
+  .sidebar-item-accordion
+    border-bottom: 1px solid #C1C1C1
+    padding: 12px 0
+    .accordion-icon:before
+      content: '-'
+    .accordion-icon.plus:before
+      content: '+'
+  .record-club-btn
+    padding: 12px 6px
+    background: #000
+    color: #fff
+    text-align: center
+.shop-grid
+  padding: 0 !important
+  .label
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    background: #000;
+    color: #fff;
+    padding: 4px 8px;
+    line-height: 1.5rem;
+.shop-pagination
+  svg
+    width: 30px
+    position: relative
+    top: 5px
+    margin: 0 10px
+    transition: transform 0.2s ease
+    &.icon-arrow-right:hover
+      transform: translateX(2px)
+    &.icon-arrow-left:hover
+      transform: translateX(-2px)
+  .page-item
+    margin: 0 4px
+    padding: 0 2px
+    &.current
+      border-bottom: 1px solid #000
+      padding-bottom: 4px
+.flex-basis-min-content
+  flex-basis: min-content !important
+.align-items-flex-start
+  align-items: flex-start

@@ -1,0 +1,238 @@
+@media screen and (min-width: 1024px)
+
+  $gutter = 30px
+
+  $margin-micro = ($gutter / 3)
+  $margin-tiny = ($gutter / 2)
+  $margin-small = ($gutter)
+  $margin-basic = ($gutter * 2)
+  $margin-mid = ($gutter * 3.5)
+  $margin-large = ($gutter * 5)
+
+  grid-maker(1000px, $gutter, l)
+
+  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
+
+  $player-height = 80px
+  $header-height = 63px
+
+  .desktop-only
+    display: block !important
+
+  .not-desktop
+    display: none !important
+
+  .border-box
+    border-top-width: $margin-tiny
+    border-bottom-width: $margin-tiny
+    &:after, &:before
+      width: $margin-tiny
+
+  body
+    &.mobile-nav-open
+      #header
+        &.nav-up
+          top: -75px
+          opacity: 0
+
+  body
+    &.background-pistachio
+      #main-nav
+        background-color: transparent
+
+  #main-nav
+    position: relative
+    top: 0
+    left: 0
+    height: auto
+    width: auto
+    z-index: 0
+    background-color: transparent
+    overflow: hidden
+    opacity: 1
+    pointer-events: auto
+    transition: none
+    a
+      pointer-events: auto
+    ul
+      height: auto
+      display: flex
+      flex-direction: row
+      font-size: $font-size-basic
+      width: auto
+      margin: 0
+      padding-top: 0
+      li:last-of-type
+        font-size: $font-size-basic
+      .icon-bag
+        width: 11px
+
+  .swiper-pagination-holder
+    display: block
+
+  #featured-albums-swiper
+    .swiper-slide
+      pointer-events: none
+      &.swiper-slide-active a
+        pointer-events: auto
+    &.slide-transition
+      .swiper-slide.swiper-slide-active a
+        pointer-events: none
+
+  #featured-albums-swiper-pagination
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    .prev-slide, .next-slide
+      position: absolute
+      top: 0
+      bottom: 0
+      width: 50%
+      svg
+        position: fixed
+        z-index: 1
+        height: auto
+        width: 56px
+        pointer-events: none
+        visibility: hidden
+      &:hover
+        svg
+          visibility: visible
+    .prev-slide
+      left: 0
+      cursor: none
+    .next-slide
+      right: 0
+      cursor: none
+
+  .album-featured-slide,
+  .post-selection-slide
+    width: 50vh
+
+  .post-selection-slide
+    padding-right: $margin-basic * 2
+
+  #overlay-gallery
+    overflow: unset
+    padding-top: 0
+    padding-left: 0
+    padding-right: 0
+    .swiper-container
+      position: relative
+      top: auto
+      left: auto
+      margin-top: 0
+      margin-left: auto
+      margin-right: auto
+    .swiper-wrapper
+      display: flex
+
+  .overlay-gallery-slide
+    width: auto
+    height: 400px
+    padding-left: $margin-basic
+    padding-right: $margin-basic
+    text-align: right
+    margin-bottom: 0
+    img
+      width: auto
+      max-width: none
+      max-height: 100%
+
+  #search-panel
+    height: calc('100vh - ' + $player-height)
+    padding-left: $margin-basic
+    padding-right: $margin-basic
+    #search-form-holder
+      padding-left: $margin-tiny
+      padding-right: $margin-tiny
+
+  .search-label-item
+    max-width: 70px
+    flex-basis: 70px
+
+  #search-tags-holder
+    margin-left: 70px
+    max-width: calc(unquote('66.66666% - 70px'))
+    flex-basis: calc(unquote('66.66666% - 70px'))
+
+  #player-main-row
+    flex-wrap: nowrap
+
+  .player-track-details
+    border-bottom: none
+    padding-bottom: 0
+    margin-bottom: 0
+
+  .player-thumb-holder
+    width: 50px
+    height: 50px
+    img
+      width: 50px
+      height: 50px
+
+  .player-control
+    min-width: 50px
+    height: 50px
+    padding: 17px
+
+  .player-play-pause
+    img
+      max-width: 100%
+    svg
+      width: 100%
+      height: auto
+
+  .album-item-recent
+    flex-wrap: nowrap
+
+  #album-streaming
+    flex-wrap: nowrap
+
+  #post-details-holder
+    order: 1
+
+  #post-title-holder
+    order: 2
+
+  #loader
+    img
+      width: 70px
+
+  #post-content
+    width: 70%
+    h1,h2,h3,h4,h5,h6
+      font-size: $font-size-large
+    figcaption
+      font-size: $font-size-small
+
+    .wp-block-pullquote
+      p
+        font-size: $font-size-large
+      cite
+        font-size: $font-size-small
+
+    .alignwide,
+    .wp-block-pullquote p
+      margin-left: calc(unquote('(-100% / 70) * 7.5')) !important
+      margin-right: calc(unquote('(-100% / 70) * 7.5')) !important
+      max-width: calc(unquote('(100% / 70) * 85'))
+
+    .alignfull
+      margin-left: calc(unquote('(-100% / 70) * 15')) !important
+      margin-right: calc(unquote('(-100% / 70) * 15')) !important
+      max-width: calc(unquote('(100% / 70) * 100'))
+
+  #footer
+    padding-bottom: $player-height + $margin-mid
+
+  #social-holder
+    justify-content: flex-start
+
+  .recent-album-thumb
+    max-width: 200px
+
+  #recent-community-post
+    margin-top: $header-height

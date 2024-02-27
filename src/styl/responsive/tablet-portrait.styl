@@ -1,0 +1,253 @@
+@media screen and (min-width: 650px)
+
+  $gutter = 20px
+
+  $margin-micro = ($gutter / 3)
+  $margin-tiny = ($gutter / 2)
+  $margin-small = ($gutter)
+  $margin-basic = ($gutter * 2)
+  $margin-mid = ($gutter * 3.5)
+  $margin-large = ($gutter * 5)
+
+  space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
+
+  grid-maker(96%, $gutter, m)
+
+  $player-height = 121px
+  $header-height = 57px
+
+  .mobile-only
+    display: none !important
+
+  .not-mobile
+    display: initial !important
+
+  .border-box
+    border-top-width: $margin-tiny
+    border-bottom-width: $margin-tiny
+    &:after, &:before
+      width: $margin-tiny
+
+  .isc-logo
+    width: 250px
+
+  /*
+  #header
+    position: absolute
+
+  #main-nav
+    height: auto
+    pointer-events: none
+    background-color: transparent
+    padding-bottom: 0
+    opacity: 1
+    pointer-events: none
+    overflow-x: hidden
+    a
+      pointer-events: auto
+
+  body
+    &.mobile-nav-open
+      #main-nav
+        pointer-events: none
+
+  #main-nav-row
+    padding-right: $margin-mid
+    justify-content: flex-end
+    flex-direction: row
+    font-size: $font-size-basic
+
+  #mobile-nav-toggle
+    display: none
+  */
+
+  #search-panel
+    top: 0
+    left: auto
+    right: 0
+    width: 70vw
+    height: calc('100vh - ' + $player-height)
+    transform: translateX(10%) translateY(0)
+    padding-left: $margin-small
+    padding-right: $margin-small
+    #search-form-holder
+      padding-left: $margin-tiny
+      padding-right: $margin-tiny
+
+  .search-label-item
+    max-width: 60px
+    flex-basis: 60px
+
+  #search-tags-holder
+    margin-left: 60px
+    max-width: calc(unquote('100% - 60px'))
+    flex-basis: calc(unquote('100% - 60px'))
+
+  body
+    &.search-open
+      #search-panel
+        transform: translateX(0) translateY(0)
+
+  #welcome-panel
+    width: 50vw
+    height: 100vh
+    box-shadow: 2px 0 12px 0 rgba(0,0,0,.5)
+
+  .search-thumb-holder
+    width: 145px
+    height: 145px
+
+  #featured-albums-swiper,
+  #post-selection-swiper
+    height: auto
+    min-height: 0
+
+  .album-featured-slide
+    padding-left: 10vw
+    padding-right: 10vw
+    width: 60vh
+
+  #post-selection-swiper,
+  .post-category-swiper
+    overflow: visible
+    .swiper-wrapper
+      flex-wrap: nowrap
+
+  .post-category-slide
+    width: 470px
+
+  .post-category-slide-small
+    width: 380px
+
+  .post-selection-slide
+    padding-right: $margin-basic * 2
+    width: 60vh
+
+  .swiper-scrollbar
+    display: block
+
+  #overlay-gallery
+    .swiper-container
+      margin-top: $margin-large
+      margin-left: $margin-small
+      margin-right: $margin-small
+
+  .overlay-gallery-slide
+    margin-bottom: $margin-basic
+
+  .mobile-margin-top
+    margin-top: 0
+
+  .mobile-padding-top
+    padding-top: 0
+
+  .search-thumb-holder
+    width: 140px
+    height: 140px
+
+  .player-thumb-holder
+    width: 37px
+    height: 37px
+    img
+      width: 37px
+      height: 37px
+
+  .player-control
+    min-width: 40px
+    height: 40px
+    padding: 13px
+
+  #loader
+    img
+      width: 60px
+
+  #post-content
+    width: 80%
+    h1,h2,h3,h4,h5,h6
+      font-size: $font-size-large
+    figcaption
+      font-size: $font-size-small
+    .wp-block-pullquote
+      p
+        font-size: $font-size-large
+      cite
+        font-size: $font-size-small
+
+    .alignwide,
+    .wp-block-pullquote p
+      margin-left: calc(unquote('(-100% / 80) * 5')) !important
+      margin-right: calc(unquote('(-100% / 80) * 5')) !important
+      max-width: calc(unquote('(100% / 80) * 90'))
+
+    .alignfull
+      margin-left: calc(unquote('(-100% / 80) * 10')) !important
+      margin-right: calc(unquote('(-100% / 80) * 10')) !important
+      max-width: calc(unquote('(100% / 80) * 100'))
+
+  #footer-row-a
+    flex-wrap: nowrap
+
+  #footer-row-b
+    flex-grow: 1
+
+  .mailchimp-input-holder
+    width: auto
+    flex-grow: 1
+
+  .mailchimp-submit-holder
+    width: auto
+
+  #footer
+    padding-bottom: $player-height + $margin-mid
+
+
+  // SHOP
+
+  #product-image-holder
+    display: block
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: auto
+    pointer-events: none
+    .toggle-gallery
+      pointer-events: auto
+    &.bottom
+      position: absolute
+      bottom: 0
+      top: auto
+
+  .product-cover-holder
+    display: inline-block
+    img
+      max-height: 60vh
+      max-width: 100%
+      width: auto
+      height: auto
+
+  #product-content-holder
+    min-height: 100vh
+
+  #product-header
+    order: 1
+  #product-price
+    order: 3
+  #product-options
+    order: 4
+  #product-button
+    order: 5
+  #product-content
+    order: 6
+  #product-details
+    order: 2
+  #product-tracklist
+    order: 7
+  #product-credits
+    order: 8
+  #product-sample
+    order: 9
+
+  #recent-community-post
+    min-height: 500px
+    margin-top: $header-height

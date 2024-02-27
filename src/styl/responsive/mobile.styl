@@ -1,0 +1,937 @@
+$gutter = 14px
+
+$margin-micro = ($gutter / 3)
+$margin-tiny = ($gutter / 2)
+$margin-small = ($gutter)
+$margin-basic = ($gutter * 2)
+$margin-mid = ($gutter * 3.5)
+$margin-large = ($gutter * 5)
+
+$font-size-extra = 36px
+$font-size-large = 32px
+$font-size-mid = 24px
+$font-size-basic = 16px
+$font-size-small = 13px
+$font-size-tiny = 9px
+
+grid-maker(96%, $gutter, s)
+
+space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
+
+font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
+
+$player-height = 95px
+$header-height = 53px
+
+*:focus
+  outline: none
+  box-shadow: 0 0 3px 2px $color-grey
+
+.not-mobile
+  display: none !important
+
+.background-white
+  background-color: $color-white
+
+.background-almond
+  background-color: $color-almond
+
+.background-pistachio
+  background-color: $color-pistachio
+
+.background-woodgrain
+  position: relative
+
+.texture-woodgrain
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  pointer-events: none
+
+.icon-gallery-max
+  filter: drop-shadow( 0px 0px 2px $color-black)
+  path
+    fill: $color-white
+.icon-gallery-min
+  filter: drop-shadow( 0px 0px 2px $color-white)
+  path
+    fill: $color-black
+
+.icon-clickthru
+  width: 1.5em
+
+.border-box
+  border-top: $margin-tiny solid $color-yellow
+  border-bottom: $margin-tiny solid $color-yellow-light
+  position: relative
+  &:after, &:before
+    height: 100%
+    width: $margin-tiny
+    position: absolute
+    top: 0
+    right: 0
+    background: $color-peach
+    content: ''
+    z-index: 50
+  &:before
+    left: 0
+    right: auto
+  &.border-top-muck
+    border-top-color: $color-muck
+  &.border-bottom-muck
+    border-bottom-color: $color-muck
+  &.border-sides-brown
+    &:after, &:before
+      background: $color-brown
+  &.border-sides-orange
+    &:after, &:before
+      background: $color-orange
+
+/*
+#header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 400
+  pointer-events: none
+  a
+    pointer-events: auto
+
+#main-nav
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  height: -moz-available
+  height: -webkit-fill-available
+  background-color: $color-almond
+  padding-bottom: $margin-basic
+  overflow: scroll
+  opacity: 0
+  pointer-events: none
+  transition: opacity .3s ease-in-out
+  a
+    pointer-events: none
+
+#main-nav-row
+  font-size: 56px
+
+#mobile-nav-toggle
+  position: relative
+  z-index: 800
+  width: 42px
+  height: 42px
+  pointer-events: auto
+  margin-right: $margin-tiny
+  margin-left: $margin-tiny
+  div
+    width: 100%
+    height: 100%
+    top: 0
+    right: 0
+    position: absolute
+    svg
+      width: 100%
+      height: 100%
+
+#nav-toggle-open
+  visibility: hidden
+
+#nav-toggle-closed
+  visibility: visible
+*/
+
+#header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 500
+  transition: top 0.2s ease-in-out, background-color 0.3s linear, opacity 0.2s ease-in-out
+  will-change: top, background-color, opacity
+  background-color: transparent
+  &.show-background
+    background-color: $color-almond
+  &.nav-up
+    top: -75px
+    opacity: 0
+
+body
+  overflow-x: hidden
+  &.mobile-nav-open
+    #header
+      &.nav-up
+        top: 0
+        opacity: 1
+  &.background-pistachio
+    #header
+      &.show-background
+        background-color: $color-pistachio
+    #main-nav
+      background-color: $color-almond
+
+.isc-logo
+  width: 200px
+
+#main-nav
+  position: absolute
+  top: 0
+  left: 0
+  height: 100vh
+  width: 100vw
+  background-color: $color-almond
+  z-index: -1
+  overflow: scroll
+  opacity: 0
+  pointer-events: none
+  transition: opacity .3s ease-in-out
+  a
+    pointer-events: none
+  ul
+    height: 100%
+    display: flex
+    flex-direction: column
+    font-size: 48px
+    width: 96%
+    margin: 0 auto
+    padding-top: $margin-large + $margin-small
+    li:last-of-type
+      font-size: $font-size-large
+    .icon-bag
+      width: 20px
+
+#mobile-nav-toggle
+  position: relative
+  z-index: 800
+  width: 36px
+  height: 36px
+  pointer-events: auto
+  margin-right: $margin-tiny
+  margin-left: $margin-tiny
+  div
+    width: 100%
+    height: 100%
+    top: 0
+    right: 0
+    position: absolute
+    svg
+      width: 100%
+      height: 100%
+
+#nav-toggle-open
+  visibility: hidden
+
+#nav-toggle-closed
+  visibility: visible
+
+#search-panel
+  position: fixed
+  top: calc('42px + (' + ($margin-small + $margin-small) + ')')
+  left: 0
+  width: 100vw
+  max-width: 1100px;
+  height: calc('100vh - (42px + ' + ($margin-small + $margin-small) + ')')
+  background: $color-grey-light
+  overflow-y: scroll
+  overflow-x: hidden
+  transform: translateY(10%)
+  opacity: 0
+  pointer-events: none
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out
+  z-index: 600
+  padding-left: $margin-tiny
+  padding-right: $margin-tiny
+
+#search-toggle-overlay
+  width: 100vh
+  height: 100vh
+  top: 0
+  left: 0
+  position: fixed
+  pointer-events: none
+  z-index: 550
+
+.search-label-item
+  max-width: 55px
+  flex-basis: 55px
+  text-align: right
+
+#search-tags-holder
+  margin-left: 55px
+  max-width: calc(unquote('100% - 55px'))
+  flex-basis: calc(unquote('100% - 55px'))
+
+#main-content
+  position: relative
+
+body
+  &.search-open
+    #main-container
+      position: fixed
+      width: 100%
+      height: 100%
+      left: 0px
+    #search-panel
+      transform: translateY(0)
+      opacity: 1
+      pointer-events: auto
+    #search-toggle-overlay
+      pointer-events: auto
+  &.welcome-open
+    #welcome-panel
+      visibility: visible
+      pointer-events: auto
+  &.mobile-nav-open
+    #nav-toggle-open
+      visibility: visible
+    #nav-toggle-closed
+      visibility: hidden
+    #main-nav
+      opacity: 1
+      pointer-events: auto
+      a
+        pointer-events: auto
+/*
+  &.welcome-open
+    #mobile-nav-toggle
+      display: none
+    #welcome-panel
+      visibility: visible
+      pointer-events: auto*/
+
+
+.mobile-padding-top
+  padding-top: $margin-mid
+
+.mobile-margin-top
+  margin-top: $margin-mid
+
+#loader
+  opacity: 0
+  pointer-events: none
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100vw
+  height: 100vh
+  height: -moz-available
+  height: -webkit-fill-available
+  top: 0
+  left: 0
+  position: fixed
+  img
+    width: 50px
+    animation: rotate 3s linear infinite
+
+@keyframes rotate
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
+#main-content,
+#posts,
+#loader,
+#footer
+  //transition: opacity 200ms ease-in-out
+  will-change: opacity
+
+body
+  &.loading, &.filtering, &.loading-more
+    #loader
+      opacity: 1
+  &.loading
+    #main-content, #footer
+      opacity: 0
+      pointer-events: none
+  &.filtering
+    #posts
+      opacity: 0
+      pointer-events: none
+
+.filter-trigger,
+input
+  appearance: none
+  background-color: transparent
+  border: 1px solid $color-black
+  border-radius: 1em
+  padding: 1em
+  cursor: pointer
+  z-index: 200
+  position: relative
+
+.filter-options
+  background: $color-white
+  border: 1px solid $color-black
+  position: absolute
+  width: 100%
+  height: auto
+  max-height: 300px
+  overflow: hidden
+  z-index: 300
+  border-radius: 1em
+  padding: 1em
+  opacity: 0
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out
+  will-change: transform, opacity
+  transform: translateY(-30%)
+  margin-top: 0.5em
+  pointer-events: none
+
+.filter
+  position: relative
+  &.show
+    .filter-options
+      opacity: 1
+      transform: translateY(0%)
+      overflow: scroll
+      pointer-events: auto
+
+.filter-option
+  cursor: pointer
+  &:hover
+    text-decoration: underline
+  &.active
+    text-decoration: none
+    font-weight: bold
+    cursor: default
+
+.search-tags
+  background: $color-white
+  border: 1px solid $color-black
+  width: 100%
+  height: auto
+  max-height: 300px
+  overflow: scroll
+  border-radius: 1em
+  padding: 1em
+
+.search-tag
+  cursor: pointer
+  &:hover
+    text-decoration: underline
+
+#playlist
+  position: fixed
+  width: 100vw
+  height: 100vh
+  height: -moz-available
+  height: -webkit-fill-available
+  background: $color-black
+  color: $color-white
+  bottom: -20%
+  left: 0
+  z-index: 500
+  transition: transform 0.35s ease-in-out, opacity 0.25s ease-in-out
+  opacity: 0
+  pointer-events: none
+  will-change: transform, opacity
+  overflow: scroll
+
+.playlist-item
+  border-bottom: 1px solid $color-white
+
+body
+  &.playlist-open
+    #main-container
+      position: fixed
+      width: 100%
+      height: 100%
+      left: 0px
+    #playlist
+      transform: translateY(-20%)
+      opacity: 1
+      pointer-events: auto
+
+#player
+  position: fixed
+  width: 100vw
+  background: $color-black
+  color: $color-white
+  bottom: 0
+  left: 0
+  z-index: 500
+
+.player-name-title-holder
+  min-width: 0
+
+.player-track-title
+  white-space: nowrap
+  overflow: hidden
+  display: block
+  text-overflow: ellipsis
+
+.player-track-details
+  border-bottom: 1px solid $color-white
+  padding-bottom: 10px
+  margin-bottom: 10px
+  min-width: 0
+
+.player-desktop-time
+  white-space: nowrap
+
+.player-thumb-holder
+  width: 25px
+  height: 25px
+  img
+    width: 25px
+    height: 25px
+
+.player-thumb
+  visibility: hidden
+  &.show
+    visibility: visible
+
+.player-name-holder
+  padding-bottom: .3em
+  margin-bottom: .3em
+  border-bottom: 1px solid $color-white
+
+.player-control
+  min-width: 30px
+  height: 30px
+  position: relative
+  padding: 10px
+  appearance: none
+  background-color: transparent
+  color: $color-white
+  border: none
+  cursor: pointer
+
+.player-control-icon
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+  font-size: $font-size-basic
+  &.hide
+    visibility: hidden
+  img
+    max-width: 50%
+  svg
+    width: 50%
+    height: auto
+
+.playlist-toggle
+  img,
+  svg
+    margin-top: -.2em
+
+.player-track-info
+  &.disabled
+    pointer-events: none
+    opacity: .5
+
+#welcome-panel
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  min-height: 80vh
+  background: $color-grey-light
+  z-index: 100
+  padding-left: 2%
+  padding-right: 2%
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.5)
+  visibility: hidden
+  pointer-events: none
+  flex-wrap: wrap
+
+#welcome-content
+  font-size: $font-size-basic
+
+#close-welcome
+  position: absolute
+  top: $margin-basic
+  right: $margin-basic
+  img
+    width: 1em
+
+.swiper-container
+  &.hide
+    .swiper-wrapper
+      opacity: 0
+
+.overlay-toggle-icon
+  width: 1.5em
+
+#album-cover-holder,
+.product-cover-holder
+  position: relative
+  .overlay-toggle-icon
+    position: absolute
+    top: 2em
+    right: 2em
+
+#post-selection
+  overflow: hidden
+
+#featured-albums-swiper,
+#post-selection-swiper
+  min-height: 70vh
+
+#post-selection-swiper,
+.post-category-swiper
+  overflow: visible
+  .swiper-wrapper
+    flex-wrap: wrap
+    transform: none
+
+.post-category-slide
+  width: 100%
+
+.album-featured-slide
+  padding-left: 5vw
+  padding-right: 5vw
+  width: 65vw
+  a
+    pointer-events: none
+  &.swiper-slide-active
+    a
+      pointer-events: auto
+    .slide-info-icon
+      visibility: visible
+
+.post-selection-slide
+  padding-right: $margin-basic * 2
+  width: 65vw
+  a
+    &:hover
+      .slide-info-icon
+        visibility: visible
+
+.album-featured-slide,
+.post-selection-slide
+  a
+    position: relative
+    display: block
+  img
+    box-shadow: 2px 8px 12px 0 rgba(0,0,0,.33)
+  .slide-info-icon
+    box-shadow: none
+    position: absolute
+    top: 1em
+    right: 1em
+    width: 1.5em
+    svg
+      filter: drop-shadow( 0px 0px 2px $color-black)
+
+.swiper-scrollbar
+  display: none
+
+.swiper-container-horizontal > .swiper-scrollbar
+  height: 1px
+  background: $color-grey
+
+.swiper-scrollbar-drag
+  height: 11px
+  border-radius: 0
+  top: -5px
+  background: $color-grey-mid
+
+.swiper-pagination-holder
+  display: none
+
+.stream-button
+  img, svg
+    height: 42px
+    width: auto
+
+.social-icon
+  img, svg
+    width: 36px
+    height: auto
+
+.search-thumb-holder
+  width: 130px
+  height: 130px
+  background-color: $color-grey-light
+  background-position: center
+  background-size: cover
+
+.type-post
+  .search-thumb-holder
+    border-radius: 100%
+
+.load-more-button
+  font-family: $font-cond
+  &.hide
+    visibility: hidden
+    pointer-events: none
+
+input
+  cursor: unset
+  &:focus
+    box-shadow: none
+
+button
+  appearance: none
+  background: none
+  border: none
+  padding: 0
+  font-family: $font-sans
+
+.small-button
+  appearance: none
+  display: inline-block
+  text-align: center
+  background: $color-black
+  padding: .5em 1em
+  border-radius: 2em
+  color: $color-white
+  cursor: pointer
+
+.simple-input
+  border: none
+  background-color: transparent
+  border-bottom: 1px solid $color-black
+  padding: 0
+  padding-top: 0.3em
+  padding-bottom: 0.3em
+  width: 100%
+  border-radius: 0 !important
+
+#social-holder
+  padding-bottom: 1.55em
+  justify-content: space-around
+
+.post-item-type
+  line-height: 2.3em
+
+hr
+  border: none
+  border-top: 1px solid $color-black
+  margin: 0
+  margin-top: 3em
+  margin-bottom: 3em
+
+figure
+  margin: 0
+
+#post-content
+  width: 100%
+  h1,h2,h3,h4,h5,h6
+    font-family: $font-sans
+    margin-bottom 1rem
+    font-size: $font-size-large
+  p
+    font-family: $font-mono
+  figcaption
+    font-size: $font-size-small
+
+  .wp-block-pullquote
+    padding: 0
+    margin-top: 5em
+    margin-bottom: 5em
+    text-align: left
+    p
+      font-size: $font-size-large
+      font-family: $font-sans
+      color: $color-black
+    cite
+      font-size: $font-size-small
+      text-transform: uppercase
+
+  .wp-block-image
+    text-align: center
+    margin: 0
+    margin-top: 5em
+    margin-bottom: 5em
+
+  figure,
+  .wp-block-embed
+    margin: 0
+    margin-top: 5em
+    margin-bottom: 5em
+
+  .wp-block-embed-instagram,
+  .wp-block-embed-twitter
+    iframe,
+    twitter-widget
+      margin-left: auto !important
+      margin-right: auto !important
+
+  .wp-block-embed-youtube,
+  .wp-block-embed-vimeo,
+  .wp-block-embed-spotify,
+  .wp-block-embed-soundcloud
+    .wp-block-embed__wrapper
+      position: relative
+      padding-bottom: 56.25%
+      height: 0
+      overflow: hidden
+      max-width: 100%
+      iframe, object, embed
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+
+iframe
+  max-width: 100% !important
+
+#overlay-gallery
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  height: -moz-available
+  height: -webkit-fill-available
+  background-color: $color-white
+  z-index: 800
+  opacity: 0
+  pointer-events: none
+  will-change: opacity
+  transition: opacity .3s ease-in-out
+  overflow: scroll
+  .swiper-container
+    position: absolute
+    top: 0
+    left: 0
+    margin-top: $margin-large
+    margin-left: $margin-small
+    margin-right: $margin-small
+  .swiper-wrapper
+    display: block
+
+.overlay-gallery-slide
+  margin-bottom: $margin-basic
+  text-align: center
+
+#close-gallery-holder
+  position: fixed
+  top: 0
+  right: 0
+  z-index: 900
+
+.toggle-gallery
+  cursor: pointer
+
+body
+  &.gallery-open
+    #overlay-gallery
+      opacity: 1
+      pointer-events: auto
+
+#footer
+  padding-bottom: $player-height + $margin-mid
+
+#footer-row-c
+  flex-wrap: nowrap
+  margin-bottom: $margin-basic
+
+.mailchimp-input-holder
+  width: 100%
+
+.mailchimp-submit-holder
+  width: 100%
+  text-align: right
+  margin-top: $margin-small
+  margin-bottom: $margin-basic
+
+.footer-address-holder
+  margin-bottom: $margin-basic
+
+.wolf-logo
+  width: 90px
+
+// SHOP
+
+#product-wrapper
+  position: relative
+
+#product-image-holder
+  display: none
+
+.shop-button,
+a.shop-button,
+.gws-variant-select
+  appearance: none
+  display: inline-block
+  text-align: center
+  background: $color-black
+  padding: 1em
+  width: 100%
+  border-radius: 2em
+  color: $color-white
+
+.gws-variant-select
+  background: $color-white
+  color: $color-black
+  border: 1px solid $color-black
+  font-family: $font-sans
+  text-align-last: center
+
+.shop-button-sold-out,
+.shop-button-in-the-cart,
+.product-sold-out
+  display: none
+
+[data-gws-available="false"]
+  .shop-button.gws-product-add
+    pointer-events: none
+    background: $color-grey
+  .shop-button-add-to-cart,
+  .product-price,
+  #product-price
+    display: none
+  .shop-button-sold-out,
+  .product-sold-out
+    display: block
+
+[data-gws-in-cart="true"]
+  .shop-button.gws-product-add
+    pointer-events: none
+    background: $color-grey
+    &:focus
+      box-shadow: none
+  .shop-button-add-to-cart
+    display: none
+  .shop-button-in-the-cart
+    display: block
+
+
+.gws-cart-thumb
+  background-size: cover
+  width: 96px
+  height: 96px
+
+.gws-cart-quantity
+  padding: .4em .8em .2em
+  font-weight: normal
+  text-align: center
+
+.icon-bag
+  width: 11px
+
+.remove-item
+  width: 11px
+
+#cart-empty
+  display: none
+
+[data-gws-cart-empty="true"]
+  #cart-holder
+    display: none
+  #cart-empty
+    display: block
+
+#recent-community-post
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  min-height: 400px
+  margin-top: $header-height
+  color: $color-white
+  text-shadow: 0px 2px 4px $color-black-half
