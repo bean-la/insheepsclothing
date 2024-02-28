@@ -20,7 +20,7 @@ if ( $product_labels && ! is_wp_error( $product_labels ) ) {
 
 ?>
 <article
-  <?php post_class('gws-product item-s-4 item-m-4 grid-column margin-bottom-basic'); ?>
+  <?php if (is_singular()) { post_class('gws-product grid-column margin-bottom-basic item-s-3 item-m-3'); } else { post_class('gws-product grid-column margin-bottom-basic item-s-4 item-m-4'); } ?>
   id="post-<?php the_ID(); ?>"
   data-gws-product-handle="<?php echo $product_handle; ?>"
   data-gws-available="true"

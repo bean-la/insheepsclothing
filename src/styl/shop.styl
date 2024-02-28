@@ -66,16 +66,14 @@ body.post-type-archive-product
     background: #000
     color: #fff
     text-align: center
-.shop-grid
-  padding: 0 !important
-  .label
-    position: absolute;
-    top: -8px;
-    right: 10px;
-    background: #000;
-    color: #fff;
-    padding: 4px 8px;
-    line-height: 1.5rem;
+.gws-product .label
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  background: #000;
+  color: #fff;
+  padding: 4px 8px;
+  line-height: 1.5rem;
 .shop-pagination
   svg
     width: 30px
@@ -120,10 +118,14 @@ body.post-type-archive-product
     .shop-sidebar, .shop-grid
       max-width: 100% !important
       flex-basis: 100% !important
-    .grid-row>.item-s-4
+    .grid-row>.item-s-4, .grid-row>.item-s-3
       max-width: 50%
       flex-basis: 50%
     .shop-grid 
       margin-top: 40px
     .item-s-12
       flex-basis: auto
+  .single-product
+    .grid-row>.item-s-3
+      max-width: 50%
+      flex-basis: 50%

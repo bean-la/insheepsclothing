@@ -273,14 +273,32 @@ function product_sort( $query ) {
 
         // Filter for format filter
         if ( $_GET['format'] ) {
-          $formats = explode ("," , $_GET['format'] );
+          $formats  = explode(',', $_GET['format']);
+          $genres   = explode(',', $_GET['genre']);
+  
           $query->set('tax_query', array(
             array (
               'taxonomy' => 'format',
               'field' => 'slug',
-              'terms' => $formats
+              'terms' => $formats,
             )
           ));
+
+          if ($_GET['genre']) {
+            $query->set('tax_query', array(
+              'relation' => 'AND',
+                array (
+                  'taxonomy' => 'format',
+                  'field' => 'slug',
+                  'terms' => $formats,
+                ),
+                array (
+                  'taxonomy' => 'style',
+                  'field' => 'slug',
+                  'terms' => $genres,
+                )
+            ));
+          }
         }
       }
     }

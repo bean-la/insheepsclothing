@@ -366,8 +366,8 @@ class GWS {
     if (variant) {
       if ($priceWrapper.length) {
         const price = variant.compareAtPrice ? variant.compareAtPrice : variant.price;
-        $priceWrapper.html(price);
-        $(element).attr(this.producePriceAttr, price);
+        $priceWrapper.html(price.amount.replace(/\.0$/,''));
+        $(element).attr(this.producePriceAttr, price.amount.replace(/\.0$/,''));
       }
       if ($variantIdInput.length) {
         this.setVariantId($variantIdInput, variant);
@@ -517,7 +517,7 @@ class GWS {
 
         this.generateCartItemsRows(lineItems);
         this.bindCartInputs(lineItems);
-        this.updateSubtotal(paymentDue);
+        this.updateSubtotal(paymentDue.amount);
         this.bindRemoveItems();
 
         $(this.cartCheckoutSelector).attr('href', webUrl);
@@ -573,7 +573,7 @@ class GWS {
         }
         if ($cartVariantTitle) {$cartVariantTitle.text(variantTitle);}
         if ($cartQuantity) {$cartQuantity.val(item.quantity);}
-        if ($cartSubtotal) {$cartSubtotal.text(item.variant.price * item.quantity);}
+        if ($cartSubtotal) {$cartSubtotal.text(item.variant.price.amount * item.quantity);}
       });
 
       this.$cartRemoveItem = $(this.cartRemoveClass);
@@ -603,7 +603,7 @@ class GWS {
         return item.id === cartItemId;
       });
       $cartItemSubtotal.text(item.quantity * item.variant.price);
-      this.updateSubtotal(checkout.paymentDue);
+      this.updateSubtotal(checkout.paymentDue.amount);
     });
   }
 
