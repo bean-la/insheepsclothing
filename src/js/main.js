@@ -840,6 +840,10 @@ class Site {
         $('div[data-trigger="genre"]').find('.plus').removeClass('plus');
         $('input[name="' + e + '"]').prop("checked", true);
       })
+      if (existingParams.length > 0) {
+        $('div[data-trigger="genre"] .selected-amount-wrapper').toggleClass('hidden');
+        $('div[data-trigger="genre"] .selected-amount').text(existingParams.length);
+      }
     }
 
     // Genre
@@ -850,6 +854,10 @@ class Site {
         $('div[data-trigger="format"]').find('.plus').removeClass('plus');
         $('input[name="' + e + '"]').prop("checked", true);
       })
+      if (existingParams.length > 0) {
+        $('div[data-trigger="format"] .selected-amount-wrapper').toggleClass('hidden');
+        $('div[data-trigger="format"] .selected-amount').text(existingParams.length);
+      }
     }
 
     $('.sidebar-item-accordion').click(function(e) {

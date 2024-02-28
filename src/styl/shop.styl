@@ -2,16 +2,21 @@
   display: none
 body.post-type-archive-product
   background-color: #F1F1F1
+.mobile-header 
+  display: block
+  text-align: center
+  padding: 12px 0
 .shop-header
   padding: 12px 0
   border: 1px solid #C1C1C1
   border-left: 0
   border-right: 0
+  .font-smaller
+    padding-left: 12px
+    position: relative
+    top: -2px
   .font-bold
     margin-right: 10px
-  .product-sort
-    position: relative
-    cursor: pointer
   .product-sort-dropdown
     display: none
     position: absolute
@@ -67,13 +72,14 @@ body.post-type-archive-product
     color: #fff
     text-align: center
 .gws-product .label
-  position: absolute;
-  top: -8px;
-  right: 10px;
-  background: #000;
-  color: #fff;
-  padding: 4px 8px;
-  line-height: 1.5rem;
+  position: absolute
+  top: -8px
+  right: 10px
+  background: #000
+  color: #fff
+  padding: 4px 8px
+  line-height: 1.5rem
+  font-size: 14px
 .shop-pagination
   svg
     width: 30px
@@ -113,7 +119,16 @@ body.post-type-archive-product
         div
           padding: 8px 24px 8px 4px
 
+@media screen and (min-width: 648px)
+  .mobile-header 
+    display: none
+  .product-sort
+    position: relative
+    top: 3px
+    cursor: pointer
 @media screen and (max-width: 480px)
+  .gws-product .label
+    font-size: 13px
   .post-type-archive-product
     .shop-sidebar, .shop-grid
       max-width: 100% !important
@@ -129,3 +144,7 @@ body.post-type-archive-product
     .grid-row>.item-s-3
       max-width: 50%
       flex-basis: 50%
+  .shop-sidebar
+    .filter-category 
+      background: none;
+      border: none;

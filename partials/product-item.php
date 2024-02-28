@@ -39,7 +39,7 @@ if ( $product_labels && ! is_wp_error( $product_labels ) ) {
       <div class="font-bold product-price padding-left-micro"><span>$</span><span class="gws-product-price"></span></div>
       <div class="font-bold product-sold-out padding-left-micro"><span>Out of Stock</span></div>
     </div>
-    <div class="product-format font-mono"><span class="font-bold">Format:</span> <?php echo $product_format; ?></div>
-    <div class="product-label font-mono"><span class="font-bold">Label:</span> <?php echo $product_labels; ?></div>
+    <div class="product-format font-mono font-smaller"><span class="font-bold">Format:</span> <?php echo $product_format; ?></div>
+    <div class="product-label font-mono font-smaller"><span class="font-bold">Label:</span> <?php echo $product_labels; ?></div>
   </div>
 </article>

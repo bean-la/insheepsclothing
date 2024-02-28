@@ -11,9 +11,10 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
 <main id="main-content">
 <div class="mobile-padding-top">
   <section class="padding-top-basic padding-bottom-basic">
+    <div class="font-sans font-larger font-center mobile-header">STORE</div>
     <div class="shop-header margin-bottom-tiny margin-top-small">
       <div class="container grid-row">
-        <div class="grid-item item-s-auto flex-grow"><span class="font-sans font-bold">SHOP</span> <span class="font-mono"><?php echo $total_results ?> results</span></div>
+        <div class="grid-item item-s-auto flex-grow"><span class="font-sans font-larger not-mobile">STORE</span> <span class="font-mono font-smaller"><?php echo $total_results ?> results</span></div>
         <div class="grid-item product-sort">
           <span class="font-mono">Sort by &darr;</span>
           <div class="product-sort-dropdown font-mono">
@@ -31,7 +32,7 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
             <a href="#" onClick="return false;" class="sidebar-toggle">  
               <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="genre">
                 <div class="grid-item no-gutter flex-grow">
-                  Genre
+                  Genre <span class="selected-amount-wrapper hidden">(<span class="selected-amount">0</span>)</span>
                 </div>
                 <div class="grid-item no-gutter accordion-icon plus">
                   
@@ -60,7 +61,7 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
             <a href="#" onClick="return false;" class="sidebar-toggle">
               <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="format">
                 <div class="grid-item no-gutter flex-grow">
-                  Format
+                  Format <span class="selected-amount-wrapper hidden">(<span class="selected-amount">0</span>)</span>
                 </div>
                 <div class="grid-item no-gutter accordion-icon plus">
                   
@@ -123,6 +124,8 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
               the_post();
               get_template_part('partials/product-item');
             }
+          } else {
+            echo "<div class='margin-left-tiny'>No results.</div>";
           }
           ?>
           </div>
