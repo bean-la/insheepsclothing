@@ -78,7 +78,7 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
                     if (get_store_format_filters()) { 
                       foreach (get_store_format_filters() as $format) {
                         $format_details = get_term_by('slug', $format, 'format');
-                        $format_name_camel_case = lcfirst(str_replace('-', '', ucwords($format_details->name, '-')));
+                        $format_name_camel_case = lcfirst(str_replace('-', '', ucwords($format_details->slug, '-')));
                       
                   ?>
                     <div class="padding-bottom-tiny margin-left-tiny">
