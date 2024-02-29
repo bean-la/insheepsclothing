@@ -86,22 +86,34 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
                 ?>
               </form>
             </div>
-            <div class="<?php if (!$_GET['list']) echo 'font-bold'; ?> sidebar-item">
-              <a href="<?php echo get_post_type_archive_link( 'product' ) ?>">Shop All</a>
+            <a href="#" onClick="return false;" class="sidebar-toggle">
+              <div class="font-uppercase sidebar-item-accordion grid-row  margin-bottom-micro" data-trigger="product-list">
+                <div class="grid-item no-gutter flex-grow">
+                  Category <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
+                </div>
+                <div class="grid-item no-gutter accordion-icon plus">
+                  
+                </div>
+              </div>
+            </a>
+            <div data-filter="product-list" class="filter closed">
+              <div class="<?php if (!$_GET['list']) echo 'font-bold'; ?> sidebar-item">
+                <a href="<?php echo get_post_type_archive_link( 'product' ) ?>">Shop All</a>
+              </div>
+
+              <?php
+              $product_lists = get_posts([
+                'post_type' => 'product_list',
+                'post_status' => 'publish',
+                'numberposts' => -1
+                // 'order'    => 'ASC'
+              ]);
+
+              foreach ( $product_lists as $list ) {
+                get_template_part('partials/shop-sidebar-item', null, array('title' => $list->post_title, 'slug' => $list->post_name));
+              }
+              ?>
             </div>
-
-            <?php
-            $product_lists = get_posts([
-              'post_type' => 'product_list',
-              'post_status' => 'publish',
-              'numberposts' => -1
-              // 'order'    => 'ASC'
-            ]);
-
-            foreach ( $product_lists as $list ) {
-              get_template_part('partials/shop-sidebar-item', null, array('title' => $list->post_title, 'slug' => $list->post_name));
-            }
-            ?>
           </div>
           <?php 
         if (get_show_join_record_club_btn()) {

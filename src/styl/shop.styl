@@ -122,6 +122,16 @@ body.post-type-archive-product
     position: relative
     top: 3px
     cursor: pointer
+  .shop-sidebar
+    .filter-category
+      div[data-trigger="product-list"]
+        display: none
+      .filter[data-filter="product-list"]
+        &.closed
+          visibility: visible
+          height: auto
+          opacity: 1
+          transition: none
 @media screen and (max-width: 480px)
   .gws-product .label
     font-size: 13px
