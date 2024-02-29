@@ -83,7 +83,7 @@ $classes .= $isStorePage ? 'background-pistachio' : '';
           </ul>
         </nav>
         <div class="grid-item not-desktop">
-          <div class="cart-item">
+          <div class="cart-item font-bold">
             <a href="<?php echo home_url('cart'); ?>"><?php get_template_part('assets/shopping-bag.svg'); ?></a>
             <span>(<span class="gws-cart-counter">0</span>)</span>
           </div>

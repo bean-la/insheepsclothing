@@ -28,91 +28,100 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
       <div class="grid-row margin-bottom-basic align-items-flex-start">
         <div class="grid-item item-s-2 flex-grow shop-sidebar font-mono">
           <div class="filter-category background-pistachio">
-            <a href="#" onClick="return false;" class="sidebar-toggle">  
-              <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="genre">
-                <div class="grid-item no-gutter flex-grow">
-                  Genre <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
-                </div>
-                <div class="grid-item no-gutter accordion-icon plus">
-                  
-                </div>
-              </div>
-            </a>
-            <div data-filter="genre" class="filter margin-top-micro closed">
-              <form>
-                <?php 
-                  if (get_store_genre_filters()) { 
-                    foreach (get_store_genre_filters() as $genre) {
-                      $genre_details = get_term_by('slug', $genre, 'style');
-                      $genre_name_camel_case = lcfirst(str_replace('-', '', ucwords($genre_details->name, '-')));
-                    
-                ?>
-                  <div class="padding-bottom-micro">
-                    <input id="<?php echo $genre_name_camel_case ?>" type="checkbox" name="<?php echo $genre ?>" value="<?php echo $genre_details->name ?>" />
-                    <label for="<?php echo $genre_name_camel_case ?>"><?php echo $genre_details->name ?></label>
-                  </div>
-                <?php 
-                    }
-                  } 
-                ?>
-              </form>
-            </div>
-            <a href="#" onClick="return false;" class="sidebar-toggle">
-              <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="format">
-                <div class="grid-item no-gutter flex-grow">
-                  Format <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
-                </div>
-                <div class="grid-item no-gutter accordion-icon plus">
-                  
-                </div>
-              </div>
-            </a>
-            <div data-filter="format" class="filter margin-top-micro closed">
-              <form>
-                <?php 
-                  if (get_store_format_filters()) { 
-                    foreach (get_store_format_filters() as $format) {
-                      $format_details = get_term_by('slug', $format, 'format');
-                      $format_name_camel_case = lcfirst(str_replace('-', '', ucwords($format_details->name, '-')));
-                    
-                ?>
-                  <div class="padding-bottom-micro">
-                    <input id="<?php echo $format_name_camel_case ?>" type="checkbox" name="<?php echo $format ?>" value="<?php echo $format_details->name ?>" />
-                    <label for="<?php echo $format_name_camel_case ?>"><?php echo $format_details->name ?></label>
-                  </div>
-                <?php 
-                    }
-                  } 
-                ?>
-              </form>
-            </div>
-            <a href="#" onClick="return false;" class="sidebar-toggle">
-              <div class="font-uppercase sidebar-item-accordion grid-row  margin-bottom-micro" data-trigger="product-list">
-                <div class="grid-item no-gutter flex-grow">
-                  Category <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
-                </div>
-                <div class="grid-item no-gutter accordion-icon plus">
-                  
-                </div>
-              </div>
-            </a>
-            <div data-filter="product-list" class="filter closed">
-              <div class="<?php if (!$_GET['list']) echo 'font-bold'; ?> sidebar-item">
-                <a href="<?php echo get_post_type_archive_link( 'product' ) ?>">Shop All</a>
-              </div>
 
-              <?php
-              $product_lists = get_posts([
-                'post_type' => 'product_list',
-                'post_status' => 'publish',
-                'numberposts' => -1
-                // 'order'    => 'ASC'
-              ]);
+            <div class="sidebar-accordion-wrapper">
+              <a href="#" onClick="return false;" class="sidebar-toggle">  
+                <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="genre">
+                  <div class="grid-item no-gutter flex-grow">
+                    Genre <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
+                  </div>
+                  <div class="grid-item no-gutter accordion-icon plus">
+                    
+                  </div>
+                </div>
+              </a>
+              <div data-filter="genre" class="filter closed">
+                <form>
+                  <?php 
+                    if (get_store_genre_filters()) { 
+                      foreach (get_store_genre_filters() as $genre) {
+                        $genre_details = get_term_by('slug', $genre, 'style');
+                        $genre_name_camel_case = lcfirst(str_replace('-', '', ucwords($genre_details->name, '-')));
+                      
+                  ?>
+                    <div class="padding-bottom-tiny margin-left-tiny">
+                      <input id="<?php echo $genre_name_camel_case ?>" type="checkbox" name="<?php echo $genre ?>" value="<?php echo $genre_details->name ?>" />
+                      <label for="<?php echo $genre_name_camel_case ?>"><?php echo $genre_details->name ?></label>
+                    </div>
+                  <?php 
+                      }
+                    } 
+                  ?>
+                </form>
+              </div>
+            </div>
 
-              foreach ( $product_lists as $list ) {
-                get_template_part('partials/shop-sidebar-item', null, array('title' => $list->post_title, 'slug' => $list->post_name));
-              }
-              ?>
+            <div class="sidebar-accordion-wrapper">
+              <a href="#" onClick="return false;" class="sidebar-toggle">
+                <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="format">
+                  <div class="grid-item no-gutter flex-grow">
+                    Format <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
+                  </div>
+                  <div class="grid-item no-gutter accordion-icon plus">
+                    
+                  </div>
+                </div>
+              </a>
+              <div data-filter="format" class="filter closed">
+                <form>
+                  <?php 
+                    if (get_store_format_filters()) { 
+                      foreach (get_store_format_filters() as $format) {
+                        $format_details = get_term_by('slug', $format, 'format');
+                        $format_name_camel_case = lcfirst(str_replace('-', '', ucwords($format_details->name, '-')));
+                      
+                  ?>
+                    <div class="padding-bottom-tiny margin-left-tiny">
+                      <input id="<?php echo $format_name_camel_case ?>" type="checkbox" name="<?php echo $format ?>" value="<?php echo $format_details->name ?>" />
+                      <label for="<?php echo $format_name_camel_case ?>"><?php echo $format_details->name ?></label>
+                    </div>
+                  <?php 
+                      }
+                    } 
+                  ?>
+                </form>
+              </div>
+            </div>
+
+            <div class="sidebar-accordion-wrapper">
+              <a href="#" onClick="return false;" class="sidebar-toggle">
+                <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="product-list">
+                  <div class="grid-item no-gutter flex-grow">
+                    Category <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
+                  </div>
+                  <div class="grid-item no-gutter accordion-icon plus">
+                    
+                  </div>
+                </div>
+              </a>
+              <div data-filter="product-list" class="filter closed">
+                <div class="<?php if (!$_GET['list']) echo 'font-bold'; ?> sidebar-item">
+                  <a href="<?php echo get_post_type_archive_link( 'product' ) ?>">Shop All</a>
+                </div>
+
+                <?php
+                $product_lists = get_posts([
+                  'post_type' => 'product_list',
+                  'post_status' => 'publish',
+                  'numberposts' => -1
+                  // 'order'    => 'ASC'
+                ]);
+
+                foreach ( $product_lists as $list ) {
+                  get_template_part('partials/shop-sidebar-item', null, array('title' => $list->post_title, 'slug' => $list->post_name));
+                }
+                ?>
+              </div>
             </div>
           </div>
           <?php 
