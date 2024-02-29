@@ -11,7 +11,6 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
 <main id="main-content">
 <div class="mobile-padding-top">
   <section class="padding-top-basic padding-bottom-basic">
-    <div class="font-sans font-larger font-center mobile-header">STORE</div>
     <div class="shop-header margin-bottom-tiny margin-top-small">
       <div class="container grid-row">
         <div class="grid-item item-s-auto flex-grow"><span class="font-sans font-larger not-mobile">STORE</span> <span class="font-mono font-smaller"><?php echo $total_results ?> results</span></div>
@@ -32,7 +31,7 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
             <a href="#" onClick="return false;" class="sidebar-toggle">  
               <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="genre">
                 <div class="grid-item no-gutter flex-grow">
-                  Genre <span class="selected-amount-wrapper hidden">(<span class="selected-amount">0</span>)</span>
+                  Genre <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
                 </div>
                 <div class="grid-item no-gutter accordion-icon plus">
                   
@@ -61,7 +60,7 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
             <a href="#" onClick="return false;" class="sidebar-toggle">
               <div class="font-uppercase sidebar-item-accordion grid-row" data-trigger="format">
                 <div class="grid-item no-gutter flex-grow">
-                  Format <span class="selected-amount-wrapper hidden">(<span class="selected-amount">0</span>)</span>
+                  Format <span class="selected-amount-wrapper font-bold hidden">(<span class="selected-amount">0</span>)</span>
                 </div>
                 <div class="grid-item no-gutter accordion-icon plus">
                   
@@ -137,19 +136,23 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
           // Previous page link
             if ($current_page > 1) {
               echo '<a href="' . add_query_arg( 'paged', ($current_page - 1), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . file_get_contents(get_stylesheet_directory() . '/assets/arrow-left.svg.php') . '</a>';
+              echo '<a class="page-item" href="' . add_query_arg( 'paged', ($current_page - 1), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . ($current_page - 1) . '</a>';
             }
 
             // Page links
             for ($i = 1; $i <= $max_pages; $i++) {
               if ($i == $current_page) {
                   echo '<span class="font-bold page-item current">' . $i . '</span>';
-              } else {
-                  echo '<a class="page-item" href="' . add_query_arg( 'paged', $i, get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . $i . '</a>';
               }
             }
 
             // Next page link
             if ($current_page < $max_pages) {
+              echo '<a class="page-item" href="' . add_query_arg( 'paged', ($current_page + 1), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . ($current_page + 1) . '</a>';
+
+              if ($current_page == 1) {
+                echo '<a class="page-item" href="' . add_query_arg( 'paged', ($current_page + 2), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . ($current_page + 2) . '</a>';
+              }
               echo '<a class="next" href="'  . add_query_arg( 'paged', ($current_page + 1), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . file_get_contents(get_stylesheet_directory() . '/assets/arrow-right.svg.php') . '</a>';
             }
           ?>
