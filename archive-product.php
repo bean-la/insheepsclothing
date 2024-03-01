@@ -15,7 +15,7 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
       <div class="container grid-row">
         <div class="grid-item item-s-auto flex-grow"><span class="font-sans font-larger not-mobile">STORE</span> <span class="font-mono font-smaller"><?php echo $total_results ?> results</span></div>
         <div class="grid-item product-sort">
-          <span class="font-mono">Sort by &darr;</span>
+          <span class="font-mono">Sort by <?php get_template_part('/assets/down-arrow.svg'); ?></span>
           <div class="product-sort-dropdown font-mono">
             <a href="<?php echo add_query_arg( 'sort', 'featured', get_post_type_archive_link( 'product' ) ); ?>&genre=<?php echo $_GET['genre'] ?>&format=<?php echo $_GET['format'] ?>"><div class="sort-item<?php if (get_query_var( 'sort', 1 ) === 'featured') echo ' item-selected'; ?>">Featured</div></a>
             <a href="<?php echo add_query_arg( 'sort', 'newest', get_post_type_archive_link( 'product' ) ); ?>&genre=<?php echo $_GET['genre'] ?>&format=<?php echo $_GET['format'] ?>"><div class="sort-item<?php if (get_query_var( 'sort', 1 ) === 'newest' || !get_query_var( 'sort' ) ) echo ' item-selected'; ?>">Newest</div></a>
@@ -171,9 +171,10 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
             if ($current_page < $max_pages) {
               echo '<a class="page-item" href="' . add_query_arg( 'paged', ($current_page + 1), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . ($current_page + 1) . '</a>';
 
-              if ($current_page == 1) {
+              if ($current_page == 1 && (($current_page + 2) < $max_pages)) {
                 echo '<a class="page-item" href="' . add_query_arg( 'paged', ($current_page + 2), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . ($current_page + 2) . '</a>';
               }
+              
               echo '<a class="next" href="'  . add_query_arg( 'paged', ($current_page + 1), get_post_type_archive_link( 'product' ) ) . '&sort=' . $_GET['sort'] . '&genre=' . $_GET['genre'] . '&format=' . $_GET['format'] . '">' . file_get_contents(get_stylesheet_directory() . '/assets/arrow-right.svg.php') . '</a>';
             }
           ?>

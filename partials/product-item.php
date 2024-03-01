@@ -11,7 +11,7 @@ if ( $product_labels && ! is_wp_error( $product_labels ) ) {
 	$labels = array();
 
 	foreach ( $product_labels as $label ) {
-		$labels[] = $label->name;
+		$labels[] = '<a href="' . get_post_type_archive_link('product') . '?label=' . $label->slug . '">' . $label->name . '</a>';
 	}
 						
 	$product_labels = join( ", ", $labels );

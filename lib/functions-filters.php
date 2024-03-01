@@ -191,17 +191,7 @@ add_filter('pre_get_posts','igv_set_tag_archive_query_args');*/
 
 function igv_set_product_archive_query_args($query) {
   if(!is_admin() && $query->is_main_query() && is_post_type_archive('product')){
-    $query->set('posts_per_page', 12);
-    $args = array(
-      'post_type' => array('product'),
-      'numberposts' => 1,
-      'meta_key'   => '_igv_product_featured',
-      'meta_value' => 'on'
-    );
-    $featured_product = get_posts($args);
-    if ($featured_product) {
-      $query->set('post__not_in', array($featured_product[0]->ID));
-    }
+    $query->set('posts_per_page', 48);
   }
   return $query;
 }
@@ -296,6 +286,17 @@ function product_sort( $query ) {
                   'taxonomy' => 'style',
                   'field' => 'slug',
                   'terms' => $genres,
+                )
+            ));
+          }
+          
+          if ($_GET['label']) {
+            $query->set('tax_query', array(
+              'relation' => 'AND',
+                array (
+                  'taxonomy' => 'label',
+                  'field' => 'slug',
+                  'terms' => $_GET['label'],
                 )
             ));
           }

@@ -112,7 +112,7 @@ if (have_posts()) {
                   <div class="margin-bottom-micro">
                     <span class="font-cond margin-right-micro">Label: </span><?php
                       foreach($labels as $key => $value) {
-                        echo '<span>' . $value->name . '</span>';
+                        echo '<a href="' . get_post_type_archive_link('product') . '?label=' . $value->slug . '"><span>' . $value->name . '</span></a>';
                         echo $key + 1 !== count($labels) ? ', ' : '';
                       }
                     ?>

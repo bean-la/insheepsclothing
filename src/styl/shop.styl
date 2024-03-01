@@ -13,6 +13,10 @@ body.post-type-archive-product
     top: -2px
   .font-bold
     margin-right: 10px
+  .product-sort
+    svg
+      position: relative
+      top: 4px
   .product-sort-dropdown
     display: none
     position: absolute
@@ -66,9 +70,15 @@ body.post-type-archive-product
   .sidebar-item-accordion
     padding: 12px 0
     .accordion-icon:before
-      content: '-'
+      content: url('../../assets/minus-sign.svg')
+      position: absolute
+      top: 3px
+      right: -2px
     .accordion-icon.plus:before
-      content: '+'
+      content: url('../../assets/plus-sign.svg')
+      position: absolute
+      top: 3px
+      right: 0
   .record-club-btn
     padding: 12px 6px
     background: #000
@@ -118,9 +128,11 @@ body.post-type-archive-product
       flex-basis: 50%
     .product-sort-dropdown
       top: 37px
+      right: 10px
+      width: 110px
       a
         div
-          padding: 8px 24px 8px 4px
+          padding: 8px 12px 8px 12px
 
 @media screen and (min-width: 648px)
   .mobile-header 
@@ -150,6 +162,9 @@ body.post-type-archive-product
 @media screen and (max-width: 480px)
   .gws-product .label
     font-size: 13px
+  .gws-product .product-price, .gws-product .product-sold-out
+    width: 100%
+    padding: 8px 0
   .post-type-archive-product
     .shop-sidebar, .shop-grid
       max-width: 100% !important
