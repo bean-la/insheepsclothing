@@ -106,7 +106,7 @@ $promo_message = gws_get_option('_gws_shop_promo_message');
               </a>
               <div data-filter="product-list" class="filter closed">
                 <div class="<?php if (!$_GET['list']) echo 'font-bold'; ?> sidebar-item">
-                  <a href="<?php echo get_post_type_archive_link( 'product' ) ?>">Shop All</a>
+                  <a href="<?php echo str_replace(home_url(), '', get_post_type_archive_link( 'product' )) ?>">Shop All</a>
                 </div>
 
                 <?php

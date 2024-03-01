@@ -26,7 +26,7 @@ if ( $product_labels && ! is_wp_error( $product_labels ) ) {
   data-gws-available="true"
   data-gws-price="false"
 >
-  <div class="grid-item item-s-12 margin-bottom-tiny">
+  <div class="grid-item item-s-12 margin-bottom-micro">
     <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('album-item'); ?></a>
     <?php if ($preorder) { echo '<div class="font-mono label">PRE-ORDER</div>'; } ?>
   </div>
