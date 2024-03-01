@@ -16,6 +16,7 @@ if (have_posts()) {
     $credits = get_post_meta($post->ID, '_igv_product_credits', true);
     $format = get_post_meta($post->ID, '_igv_product_format', true);
     $sample_embed = get_post_meta($post->ID, '_igv_product_sample_embed', true);
+    $preorder       = get_post_meta($post->ID, '_igv_product_preorder', true);
 
     $styles = get_the_terms($post->ID, 'style');
     $labels = get_the_terms($post->ID, 'label');
@@ -33,7 +34,7 @@ if (have_posts()) {
       <div class="container">
         <div class="grid-row">
           <div class="grid-item item-s-12 item-m-5 margin-bottom-basic">
-            <div class="product-cover-holder <?php echo !empty($images) ? 'toggle-gallery' : ''; ?>">
+            <div class="product-cover-holder font-mono <?php echo !empty($images) ? 'toggle-gallery' : ''; echo !empty($preorder) ? 'preorder' : ''; ?>">
               <?php the_post_thumbnail('large', array( 'alt' => get_the_title() . ' product image', 'data-no-lazysizes' => 'true')); ?>
               <?php if (!empty($images)) { ?>
                 <div><span class="font-size-small font-sans">View Product Images</span></div>
@@ -69,7 +70,7 @@ if (have_posts()) {
               <?php } ?>
             </header>
             <div class="grid-item margin-top-small margin-bottom-basic mobile-only" id="product-image-mobile">
-              <div class="product-cover-holder <?php echo !empty($images) ? 'toggle-gallery' : ''; ?>">
+              <div class="product-cover-holder font-mono <?php echo !empty($images) ? 'toggle-gallery ' : ''; echo !empty($preorder) ? 'preorder' : ''; ?>">
                 <?php the_post_thumbnail('large', array( 'alt' => get_the_title() . ' product image', 'data-no-lazysizes' => 'true')); ?>
                 <?php if (!empty($images)) { ?>
                   <div><span class="font-size-tiny font-sans">View Product Images</span></div>
@@ -86,7 +87,7 @@ if (have_posts()) {
                 <form class="gws-product-form" method="post" enctype='multipart/form-data'>
                   <input type="hidden" name="variant-id" class="gws-variant-id" value="" />
                   <button type="submit" class="shop-button gws-product-add u-pointer">
-                    <span class="shop-button-add-to-cart">Add to Cart</span>
+                    <span class="shop-button-add-to-cart"><?php echo ($preorder) ? 'Pre-order' : 'Add to Cart'; ?></span>
                     <span class="shop-button-sold-out">Out of Stock</span>
                     <span class="shop-button-in-the-cart">In the Cart</span>
                   </button>
@@ -102,7 +103,7 @@ if (have_posts()) {
                   <div class="margin-bottom-micro">
                     <span class="font-cond margin-right-micro">Style: </span><?php
                       foreach($styles as $key => $value) {
-                        echo '<span><a href="' . get_post_type_archive_link('album') . '?style=' . $value->slug . '">' . $value->name . '</a></span>';
+                        echo '<span><a href="' . get_post_type_archive_link('product') . '?genre=' . $value->slug . '">' . $value->name . '</a></span>';
                         echo $key + 1 !== count($styles) ? ', ' : '';
                       }
                     ?>
